@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Leaflet CSS et JS pour la carte -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" class="location" placeholder="Your location" />
+      <button type="submit" class="send_location">Send</button>
+
+      <div id="weather-container">
+        <!-- Zone pour afficher la météo -->
+        <div id="weather-info"></div>
+
+        <!-- Carte Leaflet -->
+      </div>
+    </div>
+  </body>
+</html>
