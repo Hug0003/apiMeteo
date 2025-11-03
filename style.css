@@ -1,8 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 .hidden {
@@ -10,50 +15,73 @@ body {
 }
 
 .container {
-  max-width: 600px;
-  margin: 25px auto;
-  padding: 10px;
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(197, 27, 27, 0.1);
+  border-radius: 8px;
+}
+
+#weather-container {
+  width: 100%;
+  margin: 20px auto 0;
+  padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(197, 27, 27, 0.1);
   border-radius: 8px;
   text-align: center;
 }
 
-#weather-container {
-  max-width: 600px;
-  margin: 25px auto;
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(197, 27, 27, 0.1);
-  border-radius: 8px;
-  text-align: center;
+.container > input.location,
+.container > button.send_location {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 h1 {
   color: #333;
+  font-size: 1.8em;
+  margin: 10px 0;
 }
+
+h2 {
+  color: #666;
+  font-size: 1em;
+  margin: 5px 0;
+}
+
 #temperature,
 #description,
 #humidity,
 #wind-speed {
   margin: 10px 0;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #555;
 }
 
 #temperature {
-  font-size: 2em;
+  font-size: 2.5em;
   color: #e67e22;
+  font-weight: bold;
 }
 
 #description {
   font-style: italic;
   color: #3498db;
+  text-transform: capitalize;
+}
+
+#humidity,
+#wind-speed {
+  font-size: 1em;
 }
 
 input.location {
-  width: calc(100% - 22px);
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -61,7 +89,7 @@ input.location {
 }
 
 button.send_location {
-  padding: 10px 20px;
+  padding: 12px 20px;
   background-color: #3498db;
   color: #fff;
   border: none;
@@ -69,15 +97,130 @@ button.send_location {
   font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 button.send_location:hover {
   background-color: #2980b9;
 }
 
+button.send_location:active {
+  transform: scale(0.98);
+}
+
 #map {
   width: 100%;
   height: 300px;
-  margin: 10px 0;
+  margin: 15px 0;
   border-radius: 8px;
+}
+
+@media (min-width: 600px) {
+  .container {
+    padding: 30px;
+    margin: 30px auto;
+  }
+
+  #weather-container {
+    padding: 30px;
+    margin: 30px auto 0;
+  }
+
+  h1 {
+    font-size: 2.2em;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+
+  #temperature {
+    font-size: 3em;
+  }
+
+  #description,
+  #humidity,
+  #wind-speed {
+    font-size: 1.2em;
+  }
+
+  .container > input.location,
+  .container > button.send_location {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+  }
+
+  input.location {
+    width: calc(70% - 10px);
+  }
+
+  button.send_location {
+    width: calc(30% - 10px);
+  }
+
+  #map {
+    height: 400px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+    padding: 40px;
+  }
+
+  #weather-container {
+    padding: 40px;
+  }
+
+  #temperature {
+    font-size: 3.5em;
+  }
+
+  input.location {
+    width: calc(75% - 10px);
+  }
+
+  button.send_location {
+    width: calc(25% - 10px);
+  }
+
+  #map {
+    height: 450px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  #weather-container {
+    margin: 15px auto 0;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  #temperature {
+    font-size: 2em;
+  }
+
+  #description,
+  #humidity,
+  #wind-speed {
+    font-size: 1em;
+  }
+
+  #map {
+    height: 250px;
+  }
 }

@@ -93,7 +93,7 @@ const coordGPS = function (city, key_location) {
       meteo(
         data.results[0].geometry.lat,
         data.results[0].geometry.lng,
-        "567470a9b2d1f02e5e175a9855a35b03"
+        API_KEYS.openweathermap
       );
     })
     .catch((err) => {
@@ -106,8 +106,7 @@ const coordGPS = function (city, key_location) {
     });
 };
 
-// Événement sur le bouton pour récupérer la météo
-document.querySelector(".send_location").addEventListener("click", function () {
+const performSearch = function () {
   const cityUser = document.querySelector(".location").value;
   if (cityUser.trim() === "") {
     document.getElementById("weather-container").innerHTML =
@@ -115,5 +114,13 @@ document.querySelector(".send_location").addEventListener("click", function () {
     return;
   }
 
-  coordGPS(cityUser, "576c0f2f1a2b41eba6277c32bc951527");
+  coordGPS(cityUser, API_KEYS.opencagedata);
+};
+
+document.querySelector(".send_location").addEventListener("click", performSearch);
+
+document.querySelector(".location").addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    performSearch();
+  }
 });
