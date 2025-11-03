@@ -31,20 +31,23 @@ const initMap = function (lat, lon) {
 };
 
 const displayMeteo = function (data) {
+  const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   const html = `
     <h1>${data.name}</h1>
     <h2>${ new Intl.DateTimeFormat(navigator.language, {hour:"numeric", minute: "numeric", day:"2-digit", month:"2-digit", year:"numeric"}).format(new Date())}</h2>
-    <div id="temperature">${Math.round(data.main.temp - 273.15)} C°</div>
+    <div id="weather-icon-container">
+      <img src="${iconUrl}" alt="${data.weather[0].description}" id="weather-icon" />
+    </div>
+    <div id="temperature">${Math.round(data.main.temp - 273.15)}°C</div>
     <div id="description">${data.weather[0].description}</div>
-    <div id="humidity">${data.main.humidity}% humidity</div>
-    <div id="wind-speed">${data.wind.speed} Km/h</div>
+    <div id="humidity">💧 ${data.main.humidity}% humidité</div>
+    <div id="wind-speed">💨 ${data.wind.speed} Km/h</div>
     <div id="map"></div>
   `;
 
   const container = document.getElementById("weather-container");
-  container.innerHTML = html; // Remplace le contenu au lieu d'empiler
+  container.innerHTML = html;
 
-  // Mise à jour de la carte avec les nouvelles coordonnées
   initMap(data.coord.lat, data.coord.lon);
 };
 
