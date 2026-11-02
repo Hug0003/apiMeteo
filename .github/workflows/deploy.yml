@@ -46,7 +46,7 @@ jobs:
 
       # Sur une pull request, l'image est seulement construite (vérifie que le build passe).
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: ${{ env.CONTEXT }}
           platforms: linux/amd64
