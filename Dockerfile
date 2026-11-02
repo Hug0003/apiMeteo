@@ -1,6 +1,6 @@
 # Site statique + relais vers les API météo, servi par Nginx sans privilèges root (port 8080).
 # Clés à fournir au conteneur : OWM_API_KEY et OPENCAGE_API_KEY.
-FROM nginxinc/nginx-unprivileged:1.27-alpine
+FROM nginxinc/nginx-unprivileged:1.31-alpine
 
 # Au démarrage, l'image remplace ${OWM_API_KEY}/${OPENCAGE_API_KEY} dans le modèle et écrit
 # le résultat dans /tmp (le reste du système de fichiers est en lecture seule en production).
